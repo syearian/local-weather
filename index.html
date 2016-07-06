@@ -5,26 +5,30 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Local Weather App</title>
-    <link rel="stylesheet" href="bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/weather-icons.min.css">
+    <link rel="stylesheet" href="css/weather-icons-wind.min.css">
     <link href="https://fonts.googleapis.com/css?family=Lato|Oswald" rel="stylesheet">
-    <link rel="stylesheet" href="custom.css">
+    <link rel="stylesheet" href="css/custom.css">
   </head>
   <body>
       
     <main class="container-fluid">
       
       <div class="row">
-        <div class="col-xs-12 col-md-10 col-md-offset-1 text-center">
+        <div class="col-xs-12 col-md-8 col-md-offset-2 text-center">
           <h1>Local Weather App</h1>
           <h3 id="city"></h3>
+          <p id="temp"></p>
+          
           <div class="row">
             <div class="col-xs-12 col-sm-6">
-              <p id="temp"></p>
-              <p id="humidity"></p>
+              <i id="icon" class="wi"></i>
+              <p id="description"></p>
             </div>
             <div class="col-xs-12 col-sm-6">
-              <p id="description"></p>
-              <img id="icon" src="" alt="weather icon">
+              <p id="humidity"></p>
+              <p id="wind"></p>
             </div>
           </div>
           

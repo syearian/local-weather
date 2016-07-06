@@ -1,0 +1,21 @@
+body {
+  background-color: black;
+  color: white;
+}
+
+i {
+  font-size: 1.5em;
+}
+
+#temp {
+  font-size: 3em;
+}
+
+#temp i {
+  font-size: 1em;
+}
+
+#icon {
+  font-size: 3em;
+  margin: 10px;
+}
