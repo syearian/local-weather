@@ -12,6 +12,12 @@ $(document).ready(function() {
     "clear" : "",
     "clouds" : "",
   };
+ 
+  
+  getLocation();
+  getWeather(lat, lon);
+
+});
 
   function getLocation() {
     if (navigator.geolocation) {
@@ -32,9 +38,4 @@ $(document).ready(function() {
       var iconCode = data.weather[0].icon;
       $("#icon").attr("src", "http://openweathermap.org/img/w/" + iconCode + ".png");
     }); // get JSON weather data and add it to page
-  } 
-  
-  getLocation();
-  getWeather(lat, lon);
-
-});
+  }
