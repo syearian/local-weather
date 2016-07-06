@@ -16,6 +16,14 @@ i {
 }
 
 #icon {
-  font-size: 3em;
-  margin: 10px;
+  font-size: 4em;
+  margin-bottom: 10px;
+}
+
+#humidity {
+  margin-top: 10px;
+}
+
+#wind i {
+  font-size: 2em;
 }
