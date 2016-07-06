@@ -13,17 +13,21 @@ var colors = {
 
 $(document).ready(function() {
 
-    if (navigator.geolocation) {
+    
+  getLocation();
+  getWeather();
+
+});
+
+function getLocation() {
+  if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position) {
       lat = position.coords.latitude;
       lon = position.coords.longitude;
       apiUrl = "http://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&units=imperial" + "&APPID=cfc2eaa1c51253a29ce7206e1aad37c9";
-    });
-  } // Get client location data
-
-  getWeather();
-
-});
+      });
+    }
+} // Get client location data
 
 function getWeather() {
   $.getJSON(apiUrl, function(json) {
