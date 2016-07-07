@@ -105,20 +105,4 @@ function changeBackImg(group) {
       break;
   }
   $("body").css("background-image", "url(" + backImg + ")");
-}
-
-// function findCity(lat, lon) {
-//   $.getJSON('https://crossorigin.me/nominatim.openstreetmap.org/reverse?json_callback=?&format=json&lat=' + lat + '&lon=' + lon + '&email=syearian@gmail.com', function(data) {
-//       country = data.address.country;
-//       city = data.address.city;
-//   });
-// } 
-
-// function getLocation() {
-//   if (navigator.geolocation) {
-//     navigator.geolocation.getCurrentPosition(function(position) {
-//       lat = position.coords.latitude;
-//       lon = position.coords.longitude;        
-//       });
-//     }
-// } // Get client location data
+} 
