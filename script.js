@@ -6,12 +6,20 @@ $(document).ready(function() {
   var country = "";
   var apiUrl = "";
     
-  getGeoLocation();
+  getLocation();
+  findCity(lat, lon);
   getWeather(lat, lon);
 
 });
 
-function getGeoLocation() {
+function findCity(lat, lon) {
+  $.getJSON('https://crossorigin.me/nominatim.openstreetmap.org/reverse?json_callback=?&format=json&lat=' + lat '&lon=' + lon + '&email=syearian@gmail.com', function(data) {
+      country = data.address.country;
+      city = data.address.city;
+  });
+} 
+
+function getLocation() {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position) {
       lat = position.coords.latitude;
@@ -19,13 +27,6 @@ function getGeoLocation() {
       });
     }
 } // Get client location data
-
-function findCity(lat, lon) {
-  $.getJSON('https://crossorigin.me/nominatim.openstreetmap.org/reverse?json_callback=?&format=json', {lat: lat, lon: lon}, function(data) {
-      country = data.address.country;
-      city = data.address.city;
-  });
-}
 
 function getWeather(lat, lon) {
   apiUrl = "https://crossorigin.me/http://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&units=imperial" + "&APPID=cfc2eaa1c51253a29ce7206e1aad37c9";
