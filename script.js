@@ -23,7 +23,7 @@ function getUnits(country) {
   } else {
     units = "metric";
   }
-}
+} // set units to correct value for country
 
 function capitalize(str) { 
   var first = str[0].slice(0, 1); 
@@ -31,7 +31,7 @@ function capitalize(str) {
   var rest = str.slice(1); 
   rest = rest.toLowerCase(); 
   return first + rest; 
-} 
+} // capitalize a string
 
 function getLocation() {
   clientLoc = document.getElementById("cityInput").value;
@@ -43,7 +43,7 @@ function getLocation() {
   country = country.toLowerCase();
   getUnits(country);
   getWeather(city, country, clientLoc, units);
-} // Get client location data
+} // Get client location data and call getWeather()
 
 function getWeather(city, country, clientLoc, units) {
   apiUrl = "https://crossorigin.me/http://api.openweathermap.org/data/2.5/weather?q=" + city + "," + country + "&units=" + units + "&APPID=cfc2eaa1c51253a29ce7206e1aad37c9";
@@ -105,4 +105,4 @@ function changeBackImg(group) {
       break;
   }
   $("body").css("background-image", "url(" + backImg + ")");
-} 
+} // Change the background image
