@@ -15,6 +15,14 @@ $(document).ready(function() {
 
 });
 
+function getUnits() {
+  if (country === us || country === lr) {
+    units = "imperial";
+  } else {
+    units = "metric";
+  }
+}
+
 function getLocation() {
   
 } // Get client location data
