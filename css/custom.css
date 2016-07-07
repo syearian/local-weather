@@ -12,7 +12,7 @@ form {
   margin-bottom: 50px;
 }
 
-input button {
+input, button {
   color: black;
 }
 
