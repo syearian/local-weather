@@ -15,7 +15,7 @@ $(document).ready(function() {
 
 });
 
-function getUnits() {
+function getUnits(code) {
   if (country === us || country === lr) {
     units = "imperial";
   } else {
@@ -24,13 +24,17 @@ function getUnits() {
 }
 
 function getLocation() {
-  
+  location = $('#cityInput').val();
+  var array = location.split(",");
+  city = array[0];
+  country = array[1].trim();
+  getUnits(country);
 } // Get client location data
 
-function getWeather(lat, lon) {
+function getWeather() {
   apiUrl = "https://crossorigin.me/http://api.openweathermap.org/data/2.5/weather?q=" + city + "," + country + "&units=" + units + "&APPID=cfc2eaa1c51253a29ce7206e1aad37c9";
   $.getJSON(apiUrl, function(data) {
-    $("#location").html(data.name);      
+    $("#location").html(location);      
     $("#temp").html('<i class="wi wi-thermometer"></i> ' + data.main.temp + ' <i class="wi wi-fahrenheit"></i>');
     var id = data.weather[0].id;
     $("#icon").addClass("wi-owm-" + id);
