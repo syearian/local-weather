@@ -5,7 +5,10 @@ $(document).ready(function() {
   var clientLoc = "";
   var units = "";
   var apiUrl = "";
-  
+
+ $.ajaxSetup({ 
+    cache: false 
+  }); // disable ajax cashe to load a new quote everytime the button is clicked 
   
   $('#go').click(function(event) {
     event.preventDefault();
