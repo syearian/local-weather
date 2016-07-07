@@ -13,7 +13,7 @@ $(document).ready(function() {
 });
 
 function findCity(lat, lon) {
-  $.getJSON('https://crossorigin.me/nominatim.openstreetmap.org/reverse?json_callback=?&format=json&lat=' + lat '&lon=' + lon + '&email=syearian@gmail.com', function(data) {
+  $.getJSON('https://crossorigin.me/nominatim.openstreetmap.org/reverse?json_callback=?&format=json&lat=' + lat + '&lon=' + lon + '&email=syearian@gmail.com', function(data) {
       country = data.address.country;
       city = data.address.city;
   });
