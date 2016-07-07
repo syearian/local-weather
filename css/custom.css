@@ -8,6 +8,10 @@ h1, h2, h3, {
   font-family: Oswald, sans-serif;
 }
 
+#title {
+  margin-bottom: 1em;
+}
+
 form {
   margin-bottom: 50px;
 }
@@ -23,10 +27,6 @@ input, button {
 
 i {
   font-size: 1.5em;
-}
-
-#location {
-  margin-bottom: 1em;
 }
 
 #temp {
