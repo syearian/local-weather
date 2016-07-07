@@ -2,14 +2,16 @@ $(document).ready(function() {
 
   var lat = 0;
   var lon = 0;
+  var city = "";
+  var country = "";
   var apiUrl = "";
     
-  getLocation();
+  getGeoLocation();
   getWeather(lat, lon);
 
 });
 
-function getLocation() {
+function getGeoLocation() {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position) {
       lat = position.coords.latitude;
@@ -17,6 +19,13 @@ function getLocation() {
       });
     }
 } // Get client location data
+
+function findCity(lat, lon) {
+  $.getJSON('https://crossorigin.me/nominatim.openstreetmap.org/reverse?json_callback=?&format=json', {lat: lat, lon: lon}, function(data) {
+      country = data.address.country;
+      city = data.address.city;
+  });
+}
 
 function getWeather(lat, lon) {
   apiUrl = "https://crossorigin.me/http://api.openweathermap.org/data/2.5/weather?lat=" + lat + "&lon=" + lon + "&units=imperial" + "&APPID=cfc2eaa1c51253a29ce7206e1aad37c9";
