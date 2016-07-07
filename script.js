@@ -10,12 +10,12 @@ $(document).ready(function() {
   
   $('#cityBtn').click(function(event) {
     getLocation();
-    getWeather(lat, lon);
+    getWeather(city, country, location, units);
   });
 
 });
 
-function getUnits() {
+function getUnits(country) {
   if (country === us || country === lr) {
     units = "imperial";
   } else {
@@ -29,10 +29,10 @@ function getLocation() {
   city = array[0];
   country = array[1].trim();
   country = country.toLowerCase();
-  getUnits();
+  getUnits(country);
 } // Get client location data
 
-function getWeather() {
+function getWeather(city, country, location, units) {
   apiUrl = "https://crossorigin.me/http://api.openweathermap.org/data/2.5/weather?q=" + city + "," + country + "&units=" + units + "&APPID=cfc2eaa1c51253a29ce7206e1aad37c9";
   $.getJSON(apiUrl, function(data) {
     $("#location").html(location);      
