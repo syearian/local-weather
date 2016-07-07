@@ -6,7 +6,8 @@ $(document).ready(function() {
   var units = "";
   var apiUrl = "";
   
-  $('#cityBtn').click(function() {
+  $('#cityBtn').click(function(event) {
+    event.preventDefault();
     getLocation();
     getWeather(city, country, clientLoc, units);
   });
