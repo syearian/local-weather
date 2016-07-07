@@ -25,10 +25,19 @@ function getUnits(country) {
   }
 }
 
+function capitalize(str) { 
+  var first = str[0].slice(0, 1); 
+  first = first.toUpperCase(); 
+  var rest = str.slice(1); 
+  rest = rest.toLowerCase(); 
+  return first + rest; 
+} 
+
 function getLocation() {
   clientLoc = document.getElementById("cityInput").value;
   var array = clientLoc.split(",");
   city = array[0];
+  city = capitalize(city);
   country = array[1].trim();
   clientLoc = city + ', ' + country.toUpperCase();
   country = country.toLowerCase();
