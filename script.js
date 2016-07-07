@@ -4,19 +4,19 @@ $(document).ready(function() {
   var lon = 0;
   var city = "";
   var country = "";
-  var location = "";
+  var clientLocation = "";
   var units = "";
   var apiUrl = "";
   
   $('#cityBtn').click(function(event) {
     getLocation();
-    getWeather(city, country, location, units);
+    getWeather(city, country, clientLocation, units);
   });
 
 });
 
 function getUnits(country) {
-  if (country === us || country === lr) {
+  if (country === 'us' || country === 'lr') {
     units = "imperial";
   } else {
     units = "metric";
@@ -24,18 +24,18 @@ function getUnits(country) {
 }
 
 function getLocation() {
-  location = $('#cityInput').val();
-  var array = location.split(",");
+  clientLocation = $('#cityInput').val();
+  var array = clientLocation.split(",");
   city = array[0];
   country = array[1].trim();
   country = country.toLowerCase();
   getUnits(country);
 } // Get client location data
 
-function getWeather(city, country, location, units) {
+function getWeather(city, country, clientLocation, units) {
   apiUrl = "https://crossorigin.me/http://api.openweathermap.org/data/2.5/weather?q=" + city + "," + country + "&units=" + units + "&APPID=cfc2eaa1c51253a29ce7206e1aad37c9";
   $.getJSON(apiUrl, function(data) {
-    $("#location").html(location);      
+    $("#location").html(clientLocation);      
     $("#temp").html('<i class="wi wi-thermometer"></i> ' + data.main.temp + ' <i class="wi wi-fahrenheit"></i>');
     var id = data.weather[0].id;
     $("#icon").addClass("wi-owm-" + id);
