@@ -13,7 +13,6 @@ $(document).ready(function() {
   $('#go').click(function(event) {
     event.preventDefault();
     getLocation();
-    getWeather(city, country, clientLoc, units);
   });
 
 });
@@ -27,17 +26,22 @@ function getUnits(country) {
 }
 
 function getLocation() {
-  clientLoc = $('#cityInput').val();
+  clientLoc = document.getElementById("cityInput").value;
   var array = clientLoc.split(",");
   city = array[0];
   country = array[1].trim();
+  clientLoc = city + ', ' + country.toUpperCase();
   country = country.toLowerCase();
   getUnits(country);
+  getWeather(city, country, clientLoc, units);
 } // Get client location data
 
 function getWeather(city, country, clientLoc, units) {
   apiUrl = "https://crossorigin.me/http://api.openweathermap.org/data/2.5/weather?q=" + city + "," + country + "&units=" + units + "&APPID=cfc2eaa1c51253a29ce7206e1aad37c9";
+    console.log(apiUrl);
   $.getJSON(apiUrl, function(data) {
+    console.log(data);
+    $("#weatherCard").css("visibility", "visible");
     $("#location").html(clientLoc);      
     $("#temp").html('<i class="wi wi-thermometer"></i> ' + data.main.temp + ' <i class="wi wi-fahrenheit"></i>');
     var id = data.weather[0].id;
@@ -48,42 +52,42 @@ function getWeather(city, country, clientLoc, units) {
     $("#wind").html(data.wind.speed + ' <i class="wi wi-wind from-' + windDir + '-deg"></i> ');
 
     var group = data.weather[0].main;
-    changeColors(group);
+    changeBackImg(group);
   }); // get JSON weather data and add it to page
 }
 
 function changeBackImg(group) {
   var backImages = {
-    "Thunderstorm" : "/img/thunderstorm.jpg",
-    "Drizzle" : "/img/drizzle.jpg",
-    "Rain" : "/img/rain.jpg",
-    "Snow" : "/img/snow.jpg",
-    "Atmosphere" : "/img/atmosphere.jpg",
-    "Clear" : "/img/clear.jpg",
-    "Clouds" : "/img/clouds.jpg",
+    "Thunderstorm" : "img/thunderstorm.jpg",
+    "Drizzle" : "img/drizzle.jpg",
+    "Rain" : "img/rain.jpg",
+    "Snow" : "img/snow.jpg",
+    "Atmosphere" : "img/atmosphere.jpg",
+    "Clear" : "img/clear.jpg",
+    "Clouds" : "img/clouds.jpg",
   };
   var backImg = "";
   switch (group) {
     case "Thunderstorm":
-      backImg = colors.Thunderstorm;
+      backImg = backImages.Thunderstorm;
       break;
     case "Drizzle":
-      backImg = colors.Drizzle;
+      backImg = backImages.Drizzle;
       break;
     case "Rain":
-      backImg = colors.Rain;
+      backImg = backImages.Rain;
       break;
     case "Snow":
-      backImg = colors.Snow;
+      backImg = backImages.Snow;
       break;
     case "Atmosphere":
-      backImg = colors.Atmosphere;
+      backImg = backImages.Atmosphere;
       break;
     case "Clear":
-      backImg = colors.Clear;
+      backImg = backImages.Clear;
       break;
     case "Clouds":
-      backImg = colors.Clouds;
+      backImg = backImages.Clouds;
       break;
   }
   $("body").css("background-image", "url(" + backImg + ")");
