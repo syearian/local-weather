@@ -38,12 +38,17 @@ function getLocation() {
 
 function getWeather(city, country, clientLoc, units) {
   apiUrl = "https://crossorigin.me/http://api.openweathermap.org/data/2.5/weather?q=" + city + "," + country + "&units=" + units + "&APPID=cfc2eaa1c51253a29ce7206e1aad37c9";
-    console.log(apiUrl);
+  var unitIcon = "";
+  if (units === "imperial") {
+    unitIcon = '<i class="wi wi-fahrenheit"></i>';
+  } else {
+    unitIcon = '<i class="wi wi-celsius"></i>';
+  }
   $.getJSON(apiUrl, function(data) {
     console.log(data);
     $("#weatherCard").css("visibility", "visible");
     $("#location").html(clientLoc);      
-    $("#temp").html('<i class="wi wi-thermometer"></i> ' + data.main.temp + ' <i class="wi wi-fahrenheit"></i>');
+    $("#temp").html('<i class="wi wi-thermometer"></i> ' + data.main.temp + ' ' + unitIcon);
     var id = data.weather[0].id;
     $("#icon").addClass("wi-owm-" + id);
     $("#description").html(data.weather[0].description);
