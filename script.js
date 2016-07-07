@@ -1,7 +1,5 @@
 $(document).ready(function() {
 
-  var lat = 0;
-  var lon = 0;
   var city = "";
   var country = "";
   var clientLoc = "";
