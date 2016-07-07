@@ -6,6 +6,7 @@ $(document).ready(function() {
   var units = "";
   var apiUrl = "";
   
+  
   $('#go').click(function(event) {
     event.preventDefault();
     getLocation();
@@ -48,41 +49,41 @@ function getWeather(city, country, clientLoc, units) {
   }); // get JSON weather data and add it to page
 }
 
-function changeColors(group) {
-  var colors = {
-    "Thunderstorm" : "#424242",
-    "Drizzle" : "#29B6F6",
-    "Rain" : "#1976D2",
-    "Snow" : "#E0E0E0",
-    "Atmosphere" : "#795548",
-    "Clear" : "#FFEE58",
-    "Clouds" : "#757575",
+function changeBackImg(group) {
+  var backImages = {
+    "Thunderstorm" : "/img/thunderstorm.jpg",
+    "Drizzle" : "/img/drizzle.jpg",
+    "Rain" : "/img/rain.jpg",
+    "Snow" : "/img/snow.jpg",
+    "Atmosphere" : "/img/atmosphere.jpg",
+    "Clear" : "/img/clear.jpg",
+    "Clouds" : "/img/clouds.jpg",
   };
-  var back = "";
+  var backImg = "";
   switch (group) {
     case "Thunderstorm":
-      back = colors.Thunderstorm;
+      backImg = colors.Thunderstorm;
       break;
     case "Drizzle":
-      back = colors.Drizzle;
+      backImg = colors.Drizzle;
       break;
     case "Rain":
-      back = colors.Rain;
+      backImg = colors.Rain;
       break;
     case "Snow":
-      back = colors.Snow;
+      backImg = colors.Snow;
       break;
     case "Atmosphere":
-      back = colors.Atmosphere;
+      backImg = colors.Atmosphere;
       break;
     case "Clear":
-      back = colors.Clear;
+      backImg = colors.Clear;
       break;
     case "Clouds":
-      back = colors.Clouds;
+      backImg = colors.Clouds;
       break;
   }
-  $("body").css("background-color", back);
+  $("body").css("background-image", "url(" + backImg + ")");
 }
 
 // function findCity(lat, lon) {
