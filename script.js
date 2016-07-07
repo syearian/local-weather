@@ -15,7 +15,7 @@ $(document).ready(function() {
 
 });
 
-function getUnits(code) {
+function getUnits() {
   if (country === us || country === lr) {
     units = "imperial";
   } else {
@@ -28,7 +28,7 @@ function getLocation() {
   var array = location.split(",");
   city = array[0];
   country = array[1].trim();
-  getUnits(country);
+  getUnits();
 } // Get client location data
 
 function getWeather() {
