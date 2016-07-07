@@ -1,12 +1,12 @@
-var lat = 0;
-var lon = 0;
-var city = "";
-var country = "";
-var location = "";
-var units = "";
-var apiUrl = "";
-
 $(document).ready(function() {
+
+  var lat = 0;
+  var lon = 0;
+  var city = "";
+  var country = "";
+  var location = "";
+  var units = "";
+  var apiUrl = "";
   
   $('#cityBtn').click(function(event) {
     getLocation();
@@ -28,6 +28,7 @@ function getLocation() {
   var array = location.split(",");
   city = array[0];
   country = array[1].trim();
+  country = country.toLowerCase();
   getUnits();
 } // Get client location data
 
