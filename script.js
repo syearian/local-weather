@@ -1,31 +1,22 @@
-$(document).ready(function() {
+var lat = 0;
+var lon = 0;
+var city = "";
+var country = "";
+var location = "";
+var units = "";
+var apiUrl = "";
 
-  var lat = 0;
-  var lon = 0;
-  var city = "";
-  var country = "";
-  var apiUrl = "";
-    
-  getLocation();
-  findCity(lat, lon);
-  getWeather(lat, lon);
+$(document).ready(function() {
+  
+  $('#cityBtn').click(function(event) {
+    getLocation();
+    getWeather(lat, lon);
+  });
 
 });
 
-function findCity(lat, lon) {
-  $.getJSON('https://crossorigin.me/nominatim.openstreetmap.org/reverse?json_callback=?&format=json&lat=' + lat + '&lon=' + lon + '&email=syearian@gmail.com', function(data) {
-      country = data.address.country;
-      city = data.address.city;
-  });
-} 
-
 function getLocation() {
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(function(position) {
-      lat = position.coords.latitude;
-      lon = position.coords.longitude;        
-      });
-    }
+  
 } // Get client location data
 
 function getWeather(lat, lon) {
@@ -81,3 +72,19 @@ function changeColors(group) {
   }
   $("body").css("background-color", back);
 }
+
+// function findCity(lat, lon) {
+//   $.getJSON('https://crossorigin.me/nominatim.openstreetmap.org/reverse?json_callback=?&format=json&lat=' + lat + '&lon=' + lon + '&email=syearian@gmail.com', function(data) {
+//       country = data.address.country;
+//       city = data.address.city;
+//   });
+// } 
+
+// function getLocation() {
+//   if (navigator.geolocation) {
+//     navigator.geolocation.getCurrentPosition(function(position) {
+//       lat = position.coords.latitude;
+//       lon = position.coords.longitude;        
+//       });
+//     }
+// } // Get client location data
