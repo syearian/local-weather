@@ -6,7 +6,6 @@ body {
 
 h1, h2, h3, {
   font-family: Oswald, sans-serif;
-  margin-bottom: 1em;
 }
 
 form {
@@ -24,6 +23,10 @@ input, button {
 
 i {
   font-size: 1.5em;
+}
+
+#location {
+  margin-bottom: 1em;
 }
 
 #temp {
