@@ -8,6 +8,10 @@ h1, h2, h3, {
   font-family: Oswald, sans-serif;
 }
 
+form {
+  margin-bottom: 30px;
+}
+
 input button {
   color: black;
 }
