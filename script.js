@@ -45,10 +45,10 @@ function changeUnitIcon(icon) {
 
 function convertFC() {
   if (units === "imperial") {
-    temp = (temp - 32) * 5 / 9;
+    temp = Math.round((temp - 32) * 5 / 9);
     units = "metric";
   } else {
-    temp = temp * 9 / 5 + 32;
+    temp = Math.round(temp * 9 / 5 + 32);
     units = "imperial";
   }
   unitIcon = changeUnitIcon(unitIcon);
@@ -90,7 +90,7 @@ function getWeather(city, country, clientLoc, units) {
     console.log(data);
     $("#weatherCard").css("visibility", "visible");
     $("#location").html(clientLoc);
-    temp = data.main.temp;
+    temp = Math.round(data.main.temp);
     $("#temp").html('<i class="wi wi-thermometer"></i> ' + temp + ' ' + unitIcon);
     var id = data.weather[0].id;
     $("#icon").addClass("wi-owm-" + id);
