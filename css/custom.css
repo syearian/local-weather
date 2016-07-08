@@ -23,6 +23,7 @@ input, button {
 #go, #switchFC {
   background-color: #424242;
   color: white;
+  border: none;
 }
 
 #go {
