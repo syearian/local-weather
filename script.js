@@ -1,5 +1,3 @@
-$(document).ready(function() {
-
   var city = "";
   var country = "";
   var clientLoc = "";
@@ -8,6 +6,8 @@ $(document).ready(function() {
   var temp = 0;
   var fIcon = '<i class="wi wi-fahrenheit"></i>';
   var cIcon = '<i class="wi wi-celsius"></i>';
+
+$(document).ready(function() {
 
  $.ajaxSetup({ 
     cache: false 
