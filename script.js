@@ -76,7 +76,7 @@ function getLocation() {
   getWeather(city, country, clientLoc, units);
 } // Get client location data and call getWeather()
 
-function getWeather(city, country, clientLoc, units, unitIcon, temp) {
+function getWeather(city, country, clientLoc, units, unitIcon) {
   apiUrl = "https://crossorigin.me/http://api.openweathermap.org/data/2.5/weather?q=" + city + "," + country + "&units=" + units + "&APPID=cfc2eaa1c51253a29ce7206e1aad37c9";
   var unitIcon
   if (units === "imperial") {
