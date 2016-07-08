@@ -6,7 +6,6 @@ $(document).ready(function() {
   var units = "";
   var apiUrl = "";
   var temp = 0;
-  var unitIcon = "";
   var fIcon = '<i class="wi wi-fahrenheit"></i>';
   var cIcon = '<i class="wi wi-celsius"></i>';
 
@@ -35,7 +34,6 @@ function getUnits(country) {
 } // set units to correct value for country
 
 function changeUnitIcon(icon) {
-  var icon = "";
   if (units === "imperial") {
     icon = fIcon;
   } else {
@@ -75,12 +73,17 @@ function getLocation() {
   clientLoc = city + ', ' + country.toUpperCase();
   country = country.toLowerCase();
   getUnits(country);
-  getWeather(city, country, clientLoc, units, unitIcon, temp);
+  getWeather(city, country, clientLoc, units, temp);
 } // Get client location data and call getWeather()
 
 function getWeather(city, country, clientLoc, units, unitIcon, temp) {
   apiUrl = "https://crossorigin.me/http://api.openweathermap.org/data/2.5/weather?q=" + city + "," + country + "&units=" + units + "&APPID=cfc2eaa1c51253a29ce7206e1aad37c9";
-  unitIcon = changeUnitIcon(unitIcon);
+  var unitIcon
+  if (units === "imperial") {
+    unitIcon = fIcon;
+  } else {
+    unitIcon = cIcon;
+  }
   $.getJSON(apiUrl, function(data) {
     console.log(data);
     $("#weatherCard").css("visibility", "visible");
