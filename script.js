@@ -2,6 +2,7 @@
   var country = "";
   var clientLoc = "";
   var units = "";
+  var unitIcon = "";
   var apiUrl = "";
   var temp = 0;
   var fIcon = '<i class="wi wi-fahrenheit"></i>';
@@ -76,9 +77,8 @@ function getLocation() {
   getWeather(city, country, clientLoc, units);
 } // Get client location data and call getWeather()
 
-function getWeather(city, country, clientLoc, units, unitIcon) {
+function getWeather(city, country, clientLoc, units) {
   apiUrl = "https://crossorigin.me/http://api.openweathermap.org/data/2.5/weather?q=" + city + "," + country + "&units=" + units + "&APPID=cfc2eaa1c51253a29ce7206e1aad37c9";
-  var unitIcon
   if (units === "imperial") {
     unitIcon = fIcon;
   } else {
