@@ -75,10 +75,10 @@ function getLocation() {
   clientLoc = city + ', ' + country.toUpperCase();
   country = country.toLowerCase();
   getUnits(country);
-  getWeather(city, country, clientLoc, units);
+  getWeather(city, country, clientLoc, units, unitIcon, temp);
 } // Get client location data and call getWeather()
 
-function getWeather(city, country, clientLoc, units) {
+function getWeather(city, country, clientLoc, units, unitIcon, temp) {
   apiUrl = "https://crossorigin.me/http://api.openweathermap.org/data/2.5/weather?q=" + city + "," + country + "&units=" + units + "&APPID=cfc2eaa1c51253a29ce7206e1aad37c9";
   unitIcon = changeUnitIcon(unitIcon);
   $.getJSON(apiUrl, function(data) {
