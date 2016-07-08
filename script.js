@@ -73,7 +73,7 @@ function getLocation() {
   clientLoc = city + ', ' + country.toUpperCase();
   country = country.toLowerCase();
   getUnits(country);
-  getWeather(city, country, clientLoc, units, temp);
+  getWeather(city, country, clientLoc, units);
 } // Get client location data and call getWeather()
 
 function getWeather(city, country, clientLoc, units, unitIcon, temp) {
