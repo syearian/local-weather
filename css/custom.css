@@ -20,6 +20,15 @@ input, button {
   color: black;
 }
 
+#go, #switchFC {
+  background-color: #424242;
+  color: white;
+}
+
+#go {
+  margin-right: 10px;
+}
+
 #weatherCard {
   background-color: rgba(66, 66, 66, .7);
   visibility: hidden;
@@ -48,4 +57,8 @@ i {
 
 #wind i {
   font-size: 2em;
+}
+
+#switchFC {
+  margin-bottom: 20px;
 }
