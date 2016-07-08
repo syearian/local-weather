@@ -46,8 +46,10 @@ function changeUnitIcon(icon) {
 function convertFC() {
   if (units === "imperial") {
     temp = (temp - 32) * 5 / 9;
+    units = "metric";
   } else {
     temp = temp * 9 / 5 + 32;
+    units = "imperial";
   }
   unitIcon = changeUnitIcon(unitIcon);
 }
