@@ -5,6 +5,10 @@ $(document).ready(function() {
   var clientLoc = "";
   var units = "";
   var apiUrl = "";
+  var temp = 0;
+  var unitIcon = "";
+  var fIcon = '<i class="wi wi-fahrenheit"></i>';
+  var cIcon = '<i class="wi wi-celsius"></i>';
 
  $.ajaxSetup({ 
     cache: false 
@@ -13,6 +17,11 @@ $(document).ready(function() {
   $('#go').click(function(event) {
     event.preventDefault();
     getLocation();
+  });
+
+  $('#switchFC').click(function(event) {
+    event.preventDefault();
+    changeTemp();
   });
 
 });
@@ -24,6 +33,30 @@ function getUnits(country) {
     units = "metric";
   }
 } // set units to correct value for country
+
+function changeUnitIcon(icon) {
+  var icon = "";
+  if (units === "imperial") {
+    icon = fIcon;
+  } else {
+    icon = cIcon;
+  }
+  return icon;
+}
+
+function convertFC() {
+  if (units === "imperial") {
+    temp = (temp - 32) * 5 / 9;
+  } else {
+    temp = temp * 9 / 5 + 32;
+  }
+  unitIcon = changeUnitIcon(unitIcon);
+}
+
+function changeTemp() {
+  convertFC();
+  $("#temp").html('<i class="wi wi-thermometer"></i> ' + temp + ' ' + unitIcon);
+}
 
 function capitalize(str) { 
   var first = str[0].slice(0, 1); 
@@ -47,17 +80,13 @@ function getLocation() {
 
 function getWeather(city, country, clientLoc, units) {
   apiUrl = "https://crossorigin.me/http://api.openweathermap.org/data/2.5/weather?q=" + city + "," + country + "&units=" + units + "&APPID=cfc2eaa1c51253a29ce7206e1aad37c9";
-  var unitIcon = "";
-  if (units === "imperial") {
-    unitIcon = '<i class="wi wi-fahrenheit"></i>';
-  } else {
-    unitIcon = '<i class="wi wi-celsius"></i>';
-  }
+  unitIcon = changeUnitIcon(unitIcon);
   $.getJSON(apiUrl, function(data) {
     console.log(data);
     $("#weatherCard").css("visibility", "visible");
-    $("#location").html(clientLoc);      
-    $("#temp").html('<i class="wi wi-thermometer"></i> ' + data.main.temp + ' ' + unitIcon);
+    $("#location").html(clientLoc);
+    temp = data.main.temp;
+    $("#temp").html('<i class="wi wi-thermometer"></i> ' + temp + ' ' + unitIcon);
     var id = data.weather[0].id;
     $("#icon").addClass("wi-owm-" + id);
     $("#description").html(data.weather[0].description);
